@@ -1,11 +1,10 @@
-# games201
-Advanced Physics Engines 2020: A Hands-on Tutorial
+# GAMES201线上课程：高级物理引擎实战指南2020 
 
 **课程主页**：http://games-cn.org/games201/
 
-**课件与直播回放**：https://forum.taichi.graphics/t/topic/272
+**课件与直播回放**：https://www.bilibili.com/video/BV1ZK411H7Hc
 
-**课程直播地址**: webinar.games-cn.org （直播结束后Bilibili有回放，请点上一个链接）
+**课程直播地址**: http://webinar.games-cn.org （直播结束后Bilibili有回放，请点上一个链接）
 
 **建议前置课程**： 高等数学、Python或任何一门程序设计语言
 
