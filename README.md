@@ -4,7 +4,7 @@
 
 **课件下载（讲义与代码）**：https://github.com/taichi-dev/games201/releases
 
-**课程回放**：https://www.bilibili.com/video/BV1ZK411H7Hc
+**课程回放地址**：https://www.bilibili.com/video/BV1ZK411H7Hc
 
 **课程直播地址**: http://webinar.games-cn.org （直播结束后Bilibili有回放，请点上一个链接）
 
