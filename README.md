@@ -23,9 +23,7 @@
 导论
 
 – 基于物理的动画简介
-
 – Taichi（太极）编程语言简介
-
 – 课程与作业安排
 
 （开放作业0：编写你自己的任意Taichi程序）
@@ -34,54 +32,35 @@
 
 拉格朗日视角（1）
 
-– 弹簧质点系统（Mass-spring systems）：你的第一个物理模拟器
-
-– 布料模拟
-
-– 显式与隐式时间积分器（Explicit/implicit time integrators）
-
-– 光滑粒子流体动力学（Smoothed particle hydrodynamics）与基于位置的流体（Position-based fluids）
-
-– 体素化（Voxelization）: 从三角网格生成粒子
-
-– 快速邻居搜索（Neighborhood search）
-
-– 刚体模拟简介
+ – 弹簧质点系统（Mass-spring systems）：你的第一个物理模拟器
+ – 显式与隐式时间积分器（Explicit/implicit time integrators）
+ – 光滑粒子流体动力学（Smoothed particle hydrodynamics）
+ - 快速邻居搜索（Neighborhood search）
 
 【第三讲，6月15日】
 
 拉格朗日视角（2）
 
-– 弱形式（weak form）与拉格朗日有限元模拟入门
+ – 弱形式（weak form）与拉格朗日有限元模拟入门
+ – 基于六面体网格（hexahedral grid）的拉格朗日有限元模拟
+ – 基于四面体网格（tetrahedral mesh）的拉格朗日有限元模拟
+ – 边界条件处理
+ – 可逆（invertible）有限元法
+ – 隐式有限元求解器（Implicit FEM solvers）
+ – 拓扑优化（Topology optimization）
 
-– 基于六面体网格（hexahedral grid）的拉格朗日有限元模拟
-
-– 基于四面体网格（tetrahedral mesh）的拉格朗日有限元模拟
-
-– 边界条件处理
-
-– 可逆（invertible）有限元法
-
-– 隐式有限元求解器（Implicit FEM solvers）
-
-– 拓扑优化（Topology optimization）
+（开放作业1：实现任意隐式积分器）
 
 【第四讲，6月22日】
 
 欧拉视角（1）
 
 – 稳定流体与半拉格朗日输送（Stable fluids and Semi-Lagrangian advection）
-
 – Chorin式压力投影（Chorin-Style projection）
-
 – Staggered网格与零空间（nullspaces）
-
 – Krylov子空间求解器（Krylov-subspace solvers）
-
 – 用无矩阵（Matrix-free）Krylov子空间方法求解泊松方程（Poisson equations）
-
 – 预条件（Preconditioning）
-
 – 几何与代数多重网格方法（multigrid methods）
 
 【第五讲，6月29日】
@@ -89,28 +68,17 @@
 欧拉视角（2）与大规模物理效果渲染
 
 – 高级输送格式（Advanced advection schemes）
-
 – 有符号距离场与等势面（Signed-distance fields, level sets）
-
 – 用等势面方法实现自由表面（Free-surface）追踪（tracking）
-
 – 自由表面与高阶边界条件处理
-
 – 路径追踪（Path tracing）与球面追踪（Sphere tracing）
-
 – 运动模糊（Motion blur）
-
 – 行军立方体（Marching cubes）表面重建
-
 – 数字微分分析器（Digital differential analyzer，DDA）
-
 – 用数字微分分析器进行光线-粒子求交（DDA ray-particle intersection）
-
 – 体素渲染（Voxel rendering）
-
 – 体积渲染（Volumetric rendering）
 
-（开放作业1：渲染你的模拟结果）
 
 7月6日，空一周，实现开放作业1
 
