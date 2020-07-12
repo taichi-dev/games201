@@ -76,53 +76,33 @@ Homework 2 (最终作业)
 
 ### 第七讲，7月20日 混合欧拉-拉格朗日视角（1）
 
-– 开放作业1点评，公布优秀代码
-
-– 粒子-网格传输（Particle-grid transfers）
-
-– 粒子元胞法（Particle-in-Cell, PIC）
-
-– 流体隐粒子（Fluid Implicit Particles, FLIP）
-
-– 仿射粒子元胞法（Affine Particle-in-Cell, APIC）
-
-– 用FLIP与APIC进行流体模拟
+* 粒子-网格传输（Particle-grid transfers）
+* 粒子元胞法（Particle-in-Cell, PIC）
+* 流体隐粒子（Fluid Implicit Particles, FLIP）
+* 仿射粒子元胞法（Affine Particle-in-Cell, APIC）与多项式粒子元胞法(Polynomial Particle-in-Cell, PolyPIC)
+* 用FLIP与APIC进行流体模拟
 
 
 ### 第八讲，7月27日 混合欧拉-拉格朗日视角（2）
 
-– 物质点法（Material Point Method, MPM）基础
-
-– 本构模型（Constitutive models）
-
-– 移动最小二乘物质点法（Moving Least Squares MPM, MLS-MPM）
-
-– 物质点法中的拉格朗日力（Lagrangian forces in MPM）
-
-– 传统稀疏数据结构：OpenVDB
-
-– 用稀疏数据结构加速物质点法的模拟
-
-– 稀疏数据结构的调优
-
-– MPM中的数值断裂（numeric fracture）与连续介质伤害力学（Continuum Damage Mechanics, CDM）
+* 物质点法（Material Point Method, MPM）基础
+* 本构模型（Constitutive models）
+* 塑性 （plasticity）
+* 移动最小二乘物质点法（Moving Least Squares MPM, MLS-MPM）
+* 物质点法中的拉格朗日力（Lagrangian forces in MPM）
+* MPM中的数值断裂（numeric fracture）与连续介质伤害力学（Continuum Damage Mechanics, CDM）
 
 
-## 第九讲，8月3日
+## 第九讲，8月3日 高性能计算与物理引擎
 
-高性能计算与物理引擎
-
-– 现代处理器微结构（processor microarchitectures）
-
-– 内存层级（memory hierarchy）
-
-– 单线程性能调优
-
-– 并行编程与性能调优
-
-– 高性能GPU编程
-
-– MPM的性能优化
+* 现代处理器微结构（processor microarchitectures）
+* 内存层级（memory hierarchy）
+* 单线程性能调优
+* 并行编程与性能调优
+* 高性能GPU编程
+* MPM的性能优化
+* 用稀疏数据结构加速物质点法的模拟
+* 稀疏数据结构的调优
 
 8月10日空一次，大家完善自己的物理引擎（开放作业2）。
 
@@ -130,11 +110,9 @@ Homework 2 (最终作业)
 
 ### 第十讲，8月17日 总结
 
-– 课程回顾
-
-– 引擎项目最终点评、评奖
-
-– 基于物理的动画中的未解难题
+* 课程回顾
+* 引擎项目最终点评、评奖
+* 基于物理的动画中的未解难题
 
 ## 助教团队
 
