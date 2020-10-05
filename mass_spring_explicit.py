@@ -2,44 +2,38 @@ import taichi as ti
 
 ti.init(arch=ti.cpu)
 
-max_num_particles = 1024
-
-dt = 1e-3
-substeps = 10
-
-num_particles = ti.field(dtype=ti.i32, shape=())
 spring_Y = ti.field(dtype=ti.f32, shape=()) # Young's modulus
 paused = ti.field(dtype=ti.i32, shape=())
 drag_damping = ti.field(dtype=ti.f32, shape=())
 dashpot_damping = ti.field(dtype=ti.f32, shape=())
 
+max_num_particles = 1024
 particle_mass = 1.0
+dt = 1e-3
+substeps = 10
 
+num_particles = ti.field(dtype=ti.i32, shape=())
 x = ti.Vector.field(2, dtype=ti.f32, shape=max_num_particles)
 v = ti.Vector.field(2, dtype=ti.f32, shape=max_num_particles)
 f = ti.Vector.field(2, dtype=ti.f32, shape=max_num_particles)
 fixed = ti.field(dtype=ti.i32, shape=max_num_particles)
 
-A = ti.Matrix.field(2, 2, dtype=ti.f32, shape=(max_num_particles, max_num_particles))
-b = ti.Vector.field(2, dtype=ti.f32, shape=max_num_particles)
-
-# rest_length[i, j] = 0 means i and j are not connected
+# rest_length[i, j] == 0 means i and j are NOT connected
 rest_length = ti.field(dtype=ti.f32, shape=(max_num_particles, max_num_particles))
 
-connection_radius = 0.15
-
-gravity = [0, -9.8]
 
 @ti.kernel
 def substep():
     # Compute force and new velocity
     n = num_particles[None]
+    
     for i in range(n):
-        f[i] = ti.Vector(gravity) * particle_mass
+        f[i] = ti.Vector([0, -9.8]) * particle_mass
         for j in range(n):
             if rest_length[i, j] != 0:
                 x_ij = x[i] - x[j]
                 d = x_ij.normalized()
+                
                 # Spring force
                 f[i] += -spring_Y[None] * (x_ij.norm() / rest_length[i, j] - 1) * d
                 
@@ -55,7 +49,6 @@ def substep():
             x[i] += v[i] * dt
         else:
             v[i] = ti.Vector([0, 0])
-    
             
         # Collide with walls
         for d in ti.static(range(2)):
@@ -70,7 +63,7 @@ def substep():
         
 @ti.kernel
 def new_particle(pos_x: ti.f32, pos_y: ti.f32, fixed_: ti.i32):
-    # Taichi doesn't support using vectors as kernel arguments yet
+    # Taichi doesn't support using vectors as kernel arguments yet, so we pass scalars
     new_particle_id = num_particles[None]
     x[new_particle_id] = [pos_x, pos_y]
     v[new_particle_id] = [0, 0]
@@ -80,7 +73,9 @@ def new_particle(pos_x: ti.f32, pos_y: ti.f32, fixed_: ti.i32):
     # Connect with existing particles
     for i in range(new_particle_id):
         dist = (x[new_particle_id] - x[i]).norm()
+        connection_radius = 0.15
         if dist < connection_radius:
+            # Connect the new particle with particle i
             rest_length[i, new_particle_id] = 0.1
             rest_length[new_particle_id, i] = 0.1
             
@@ -141,21 +136,22 @@ def main():
         X = x.to_numpy()
         n = num_particles[None]
         
+        # Draw the springs
         for i in range(n):
             for j in range(i + 1, n):
                 if rest_length[i, j] != 0:
                     gui.line(begin=X[i], end=X[j], radius=2, color=0x444444)
                     
-        # Draw the points
+        # Draw the particles
         for i in range(n):
             c = 0xFF0000 if fixed[i] else 0x111111
             gui.circle(pos=X[i], color=c, radius=5)
-        
+
+        gui.text(content=f'Left click: add mass point (with shift to fix); Right click: attract', pos=(0, 0.99), color=0x0)
         gui.text(content=f'C: clear all; Space: pause', pos=(0, 0.95), color=0x0)
         gui.text(content=f'Y: Spring Young\'s modulus {spring_Y[None]:.1f}', pos=(0, 0.9), color=0x0)
         gui.text(content=f'D: Drag damping {drag_damping[None]:.2f}', pos=(0, 0.85), color=0x0)
         gui.text(content=f'X: Dashpot damping {dashpot_damping[None]:.2f}', pos=(0, 0.8), color=0x0)
-        gui.text(content=f'Left click: add mass point (with shift to fix); Right click: attract', pos=(0, 0.75), color=0x0)
         gui.show()
 
 if __name__ == '__main__':
