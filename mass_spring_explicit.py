@@ -54,14 +54,18 @@ def substep():
         else:
             v[i] = ti.Vector([0, 0])
 
-        # Collide with walls
+        # Collide with four walls
         for d in ti.static(range(2)):
-            if x[i][d] < 0:
-                x[i][d] = 0
-                v[i][d] = 0
-            if x[i][d] > 1:
-                x[i][d] = 1
-                v[i][d] = 0
+            # d = 0: treating X (horizontal) component
+            # d = 1: treating Y (vertical) component
+
+            if x[i][d] < 0:  # Bottom and left
+                x[i][d] = 0  # move particle inside
+                v[i][d] = 0  # stop it from moving further
+
+            if x[i][d] > 1:  # Top and right
+                x[i][d] = 1  # move particle inside
+                v[i][d] = 0  # stop it from moving further
 
 
 @ti.kernel
