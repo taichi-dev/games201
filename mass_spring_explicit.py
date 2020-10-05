@@ -41,7 +41,7 @@ def substep():
                 x_ij = x[i] - x[j]
                 d = x_ij.normalized()
                 # Spring force
-                f[i] += -spring_Y[None] * (x_ij.norm() - rest_length[i, j]) * d
+                f[i] += -spring_Y[None] * (x_ij.norm() / rest_length[i, j] - 1) * d
                 
                 # Dashpot damping
                 v_rel = (v[i] - v[j]).dot(d)
@@ -95,7 +95,7 @@ def attract(pos_x: ti.f32, pos_y: ti.f32):
 def main():
     gui = ti.GUI('Explicit Mass Spring System', res=(512, 512), background_color=0xDDDDDD)
 
-    spring_Y[None] = 10000
+    spring_Y[None] = 1000
     drag_damping[None] = 1
     dashpot_damping[None] = 100
 
