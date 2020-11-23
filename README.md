@@ -1,6 +1,6 @@
 # GAMES201线上课程：高级物理引擎实战指南2020 
 
-**课程主页**：http://games-cn.org/games201/
+**最新课程主页**：https://yuanming.taichi.graphics/teaching/2020-games201/ (本页面不再更新)
 
 **课件下载（讲义与代码）**：https://forum.taichi.graphics/t/topic/272
 
